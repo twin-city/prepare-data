@@ -3,3 +3,5 @@ geopandas
 wget==3.2
 pytest
 requests
+pylzma
+py7zr

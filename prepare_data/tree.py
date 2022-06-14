@@ -20,13 +20,12 @@ def save(data, path:Path):
     with open(path, 'w') as outfile:
         outfile.write(data_arbres)
 
-def prepare(data):
+def prepare(data, quartier):
     data = pd.DataFrame.from_dict(data)
     arbres = pd.json_normalize(data['fields'])
     arbres = arbres[['hauteurenm', 'libellefrancais', 'geo_point_2d']]
     arbres.rename(columns={'hauteurenm':'hauteur', 'libellefrancais':'espece'})
 
-    quartier = Polygon([(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)])
     coordonnees=[]
     index_to_remove=[]
     repere = ['x','y']
