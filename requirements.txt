@@ -3,3 +3,4 @@ geopandas
 wget==3.2
 pytest
 requests
+zipfile38
