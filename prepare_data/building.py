@@ -7,13 +7,15 @@ import zipfile
 import re
 import requests
 from dotenv import load_dotenv
-from utils import convert_geo
+from utils import convert_geo, write as write_json
+from math import nan
+from shapely.geometry import Polygon, LineString, MultiLineString, MultiPolygon, collection
 
-load_dotenv('../.env')
+load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert
 data_path = Path(os.getenv('DATA_PATH'))
 
-def get(url, force: bool=False):
+def get(url, force: bool=False) -> Path:
     """Télécharge et retourne le fichier gpkg"""
 
     zip_file = data_path / 'bdnb_75.zip'
@@ -28,15 +30,15 @@ def get(url, force: bool=False):
         allfiles = archive.namelist()
         selective_files = [f for f in allfiles if filter_pattern.match(f)]
         for file in selective_files:
-            if force or (not (data_path / selective_files).exists()):
-                archive.extract(file,path=data_path)
+            if force or (not (data_path / file).exists()):
+                archive.extract(file, path=data_path)
 
-    path_file = str(data_path / selective_files[0])
-    return path_file
+    path_gpkg = data_path / selective_files[0]
+    return path_gpkg
 
-def prepare(path:Path, quartier):
+def prepare(path_gpkg:Path, quartier):
     """Lit le gpkg et filtre les données de quartier"""
-    df_source = gpd.read_file(path_file, mask=quartier_st_aug, crs = CRS)
+    df_source = gpd.read_file(path_gpkg, mask=quartier, crs = CRS)
     df_source = df_source[['bnb_id', 'cerffo2020_annee_construction', 'cerffo2020_mat_mur_txt', 'cerffo2020_mat_toit_txt', 'igntop202103_bat_hauteur', 'geometry']]
     df_explode = df_source.explode(ignore_index=True)
 
@@ -51,7 +53,7 @@ def prepare(path:Path, quartier):
                   "igntop202103_bat_hauteur": "hauteur",
                   }
 
-    df_explode = df_explode.replace({np.nan: None})
+    df_explode = df_explode.replace({nan: None})
 
     for i, row1 in df_explode.iterrows():
         print(f'-----{row1.bnb_id}-----')
@@ -101,5 +103,7 @@ def prepare(path:Path, quartier):
 
     return dict2save
 
-def write(data):
-    data.to_json('/workspace/home/data/arbres_place_st_augustin.json', orient = "table")
+def write(path_building: Path, data, force=True):
+
+    if force or (not path_building.exists()):
+        write_json(path_building, data)
