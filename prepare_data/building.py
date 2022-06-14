@@ -6,11 +6,12 @@ from pathlib import Path
 import zipfile
 import re
 import requests
-
+from dotenv import load_dotenv
 from utils import convert_geo
 
+load_dotenv('../.env')
 CRS = "EPSG:2154"#lambert
-data_path = Path('/workspace/home/data')
+data_path = Path(os.getenv('DATA_PATH'))
 
 def get(url, force: bool=False):
     """Télécharge et retourne le fichier gpkg"""
@@ -23,11 +24,11 @@ def get(url, force: bool=False):
             f.write(req.content)
 
     filter_pattern = re.compile(r'(.*).gpkg$')
-    with zipfile.ZipFile(zip_file, 'r') as archive:
+    with zipfile.ZipFile(str(zip_file), 'r') as archive:
         allfiles = archive.namelist()
         selective_files = [f for f in allfiles if filter_pattern.match(f)]
-        if force or (not zip_file.exists()):
-            for file in selective_files:
+        for file in selective_files:
+            if force or (not (data_path / selective_files).exists()):
                 archive.extract(file,path=data_path)
 
     path_file = str(data_path / selective_files[0])
