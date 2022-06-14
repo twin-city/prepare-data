@@ -5,3 +5,4 @@ pytest
 requests
 zipfile38
 python-dotenv
+geojson

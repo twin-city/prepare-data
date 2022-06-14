@@ -8,3 +8,11 @@ venv/bin/pip3 install -r requirements.txt
 source venv/bin/activate
 ```
 
+# Populate .env
+
+```
+mv .env.sample .env
+mkdir data
+```
+
+-> Change DATA_PATH if needed
