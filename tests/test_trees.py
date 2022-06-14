@@ -1,19 +1,18 @@
-from tree import get, prepare, save, write
+from tree import get, prepare, write, data_path
 from pathlib import Path
+from utils import load
+from fixture import quartier
 
 url ='https://opendata.paris.fr/explore/dataset/les-arbres/download/?format=json&timezone=Europe/Berlin&lang=fr&epsg=2154'
-path = '/workspace/home/data/arbres_paris.json'
- 
+_path_json =  data_path / 'les-arbres.json'
+
+_path_tree = Path(__file__).parent / 'data/les-arbres-st-augustin.json'
+
 def test_get():
-    data_tree = get(url)
-    assert type(data_tree) == list
+    path_json = get(url, True)
+    import pdb; pdb.set_trace()
+    assert path_json.stat().st_size > 1e7
 
-def test_save():
-    save(get(url), path)
-
-def test_prepare():
-    data_arbres = prepare(get(url))
-    assert len(data_arbres)== 122
-
-def test_write():
-    write(prepare(get(url)))
+def test_prepare(quartier):
+    data_tree = prepare(_path_json, quartier)
+    assert len(data_tree)== 122
