@@ -8,30 +8,48 @@ import geojson
 import shapely
 from shapely.geometry import Polygon, LineString, MultiLineString, MultiPolygon, collection, Point
 from dotenv import load_dotenv
+from pyproj import Proj, transform
 from utils import load, write as write_json
 
 load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert
+inProj  = Proj(f"+init={CRS}",preserve_units=True)
+outProj = Proj("+init=EPSG:4326") # WGS84 in degrees and not EPSG:3857 in meters)
+# swap x,y as mkennedy says
+
 data_path = Path(os.getenv('DATA_PATH'))
 
-def get(url, force: bool=False) -> Path:
+
+def get(url, quartier, force: bool=False) -> Path:
 
     path_json = data_path / 'les-arbres.json'
+
+    dataset = 'les-arbres'
+    quartier = [(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)]
+
+    polygon = ','.join([str(transform(inProj, outProj, x, y)[::-1]) for x,y in quartier])
+    list_facet = '&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenmf'
+
+    url = url.format(dataset=dataset, polygon=polygon, list_facet=list_facet)
+
     if force or (not path_json.exists()):
         data_tree = requests.get(url)
         if data_tree.status_code == 200:
             write_json(path_json, data_tree.json())
-            return path_json
+            return data_tree.json()
         else:
             return data_tree.status_code
 
-    return path_json
+    elif path_json.exists():
+        data = load(path_json)
+        return data
 
-def prepare(path_json: Path, quartier):
+def prepare(data_json: list, quartier):
     #data = load(path_json)
-    #import pdb; pdb.set_trace()
-    data = pd.read_json(path_json)
+
+    data = pd.DataFrame.from_dict(data_json)
     arbres = pd.json_normalize(data['fields'])
+    import pdb; pdb.set_trace()
     arbres = arbres[['hauteurenm', 'libellefrancais', 'geo_point_2d']]
     arbres.rename(columns={'hauteurenm':'hauteur', 'libellefrancais':'espece'})
 
