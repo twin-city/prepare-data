@@ -1,14 +1,13 @@
 from pathlib import Path
 from typing import List
-
-import pdb; pdb.set_trace()
+import json
 
 def write(path: Path, obj):
     # write JSON files:
-    with path.open("w", encoding="UTF-8") as target: 
+    with path.open("w", encoding="UTF-8") as target:
         json.dump(obj, target)
 
-        
+
 def load(path: Path):
     # read JSON files:
     with path.open(encoding="UTF-8") as source:
