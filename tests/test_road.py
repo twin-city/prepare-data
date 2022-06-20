@@ -23,4 +23,4 @@ def test_prepare():
     quartier = create_quartier(649985, 650266, 6864006, 6864226)
     data = get(url, quartier)
     data_road = prepare(data)
-    assert data_road
+    assert data_road.contains('coordonnees')

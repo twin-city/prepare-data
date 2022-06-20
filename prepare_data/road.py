@@ -33,7 +33,6 @@ def get(url, quartier):
         print(selective_files)
         archive.extract(targets=selective_files,path=str(data_path))
     df = gpd.read_file(data_path / selective_files[0], mask=quartier, crs = CRS, layer='troncon_de_route')
-    import pdb; pdb.set_trace()
     return df
 
 def prepare(df):
@@ -49,8 +48,8 @@ def prepare(df):
         new_line.append(new_point2)
         coordonnees.append(new_line)
     df['coordonnees'] = coordonnees
-    df.drop('geometry', axis='columns', inplace=True)
     import pdb; pdb.set_trace()
+    df.drop('geometry', axis='columns', inplace=True)
     return df
 
 def write(path_quartier: Path, data):
