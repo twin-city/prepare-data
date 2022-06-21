@@ -20,3 +20,9 @@ def convert_geo(list_geo: list, type_geo:str) -> List[dict]:
     for point in list_geo:
         dict_geo['coordonnees'] += [{'x':point[0], "y":point[1]}]
     return dict_geo
+
+def create_neighborhood(x1, x2, y1, y2):
+    #create neighborhood polygon
+    quartier = gpd.GeoSeries([Polygon([[(x1,y1), (x2,y1), (x2, y2),(x1,y2), (x1,y1)]])])
+    quartier = quartier.set_crs(CRS)
+    return quartier
