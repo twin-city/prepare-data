@@ -7,6 +7,7 @@ url = 'https://wxs.ign.fr/859x8t863h6a09o9o6fy4v60/telechargement/prepackage/BDT
 CRS = "EPSG:2154"#lambert
 quartier_st_aug =gpd.GeoSeries([Polygon([[(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)]])])
 quartier_st_aug =  quartier_st_aug.set_crs(CRS)
+data_path = Path('/workspace/home/data')
 
 def test_create():
     quartier = create_quartier(649985, 650266, 6864006, 6864226)
@@ -16,11 +17,9 @@ def test_create():
 
 def test_get():
     quartier = create_quartier(649985, 650266, 6864006, 6864226)
-    data = get(url, quartier)
+    data = get(url, data_path)
     assert len(data)==26
 
 def test_prepare():
-    quartier = create_quartier(649985, 650266, 6864006, 6864226)
-    data = get(url, quartier)
     data_road = prepare(data)
     assert data_road.contains('coordonnees')
