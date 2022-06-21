@@ -14,6 +14,7 @@ from shapely.geometry import Polygon, LineString, MultiLineString, MultiPolygon,
 load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert
 data_path = Path(os.getenv('DATA_PATH'))
+filter_pattern = re.compile(r'(.*).gpkg$')
 
 def get(url, force: bool=False) -> Path:
     """Télécharge et retourne le fichier gpkg"""
@@ -25,7 +26,6 @@ def get(url, force: bool=False) -> Path:
         with zip_file.open('wb') as f:
             f.write(req.content)
 
-    filter_pattern = re.compile(r'(.*).gpkg$')
     with zipfile.ZipFile(str(zip_file), 'r') as archive:
         allfiles = archive.namelist()
         selective_files = [f for f in allfiles if filter_pattern.match(f)]
@@ -104,6 +104,5 @@ def prepare(path_gpkg:Path, quartier):
     return dict2save
 
 def write(path_building: Path, data, force=True):
-
     if force or (not path_building.exists()):
         write_json(path_building, data)
