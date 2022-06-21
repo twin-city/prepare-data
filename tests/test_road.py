@@ -22,4 +22,5 @@ def test_write(quartier):
     path_road = data_path / 'road.json'
     data_road = prepare(_path_gpkg, quartier)
     write(path_road, data_road)
+    import pdb ; pdb.set_trace()
     assert path_road.stat().st_size == 4671
