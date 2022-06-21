@@ -1,4 +1,4 @@
-from road import get, create_quartier, write, prepare
+from road import get, write, prepare
 from pathlib import Path
 import geopandas as gpd
 from geojson import Polygon
@@ -9,17 +9,10 @@ quartier_st_aug =gpd.GeoSeries([Polygon([[(649985, 6864006), (650266, 6864006),(
 quartier_st_aug =  quartier_st_aug.set_crs(CRS)
 data_path = Path('/workspace/home/data')
 
-def test_create():
-    quartier = create_quartier(649985, 650266, 6864006, 6864226)
-    assert quartier == quartier_st_aug
-
-
-
 def test_get():
-    quartier = create_quartier(649985, 650266, 6864006, 6864226)
-    data = get(url, data_path)
-    assert len(data)==26
+    get_path = get(url, data_path)
+    assert get_path==Path('/workspace/home/data')
 
 def test_prepare():
-    data_road = prepare(data)
-    assert data_road.contains('coordonnees')
+    data_road = prepare(quartier_st_aug, data_path)
+    assert 'coordonnees' in data_road.columns
