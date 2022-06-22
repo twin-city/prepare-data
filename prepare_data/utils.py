@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import List
 import json
+from shapely.geometry import Polygon
 
 def write(path: Path, obj):
     # write JSON files:
@@ -26,3 +27,8 @@ def create_geoseries(x1, x2, y1, y2):
     quartier = gpd.GeoSeries([Polygon([[(x1,y1), (x2,y1), (x2, y2),(x1,y2), (x1,y1)]])])
     quartier = quartier.set_crs(CRS)
     return quartier
+
+def convert2poly(x1, y1, x2, y2):
+    return Polygon([(x1, y1), (x2, y1),
+                    (x2, y2), (x1, y2),
+                    (x1, y1)])
