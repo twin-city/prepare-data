@@ -15,19 +15,21 @@ tree_url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&
 
 data_path = Path(os.getenv('DATA_PATH'))
 
+data_path.mkdir(parents=True, exist_ok=True)
+
 path_lights = data_path / 'light.json'
 path_road = data_path / 'road.json'
 path_building = data_path / 'building.json'
 path_tree = data_path / 'tree.json'
 
 def main(neighborhood):
-    data_light=light.prepare(light.get(light_url, neighborhood, force = True))
+    data_light = light.prepare(light.get(light_url, neighborhood, force = True))
     light.write(path_lights, data_light)
-    data_road= road.prepare(road.get(road_url, force = False),neighborhood )
+    data_road = road.prepare(road.get(road_url, force = False),neighborhood )
     road.write(path_road, data_road)
     data_building = building.prepare(building.get(building_url, force = False), neighborhood)
     building.write(path_building, data_building)
-    data_tree = tree.prepare(tree.get(tree_url, neighborhood, force = False))
+    data_tree = tree.prepare(tree.get(tree_url, neighborhood, force = True))
     tree.write(path_tree, data_tree)
 
 if __name__ == '__main__':

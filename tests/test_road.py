@@ -9,7 +9,7 @@ _path_gpkg =  data_path / 'BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/BDT
 _path_road = Path(__file__).parent / 'data/les-routes-st-augustin.json'
 
 def test_get():
-    path_gpkg = get(url, force=False)
+    path_gpkg = get(url, force=True)
     assert path_gpkg == _path_gpkg
     assert path_gpkg.stat().st_size > 1e6
 

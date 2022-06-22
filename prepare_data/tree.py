@@ -19,9 +19,8 @@ outProj = Proj("+init=EPSG:4326") # WGS84 in degrees and not EPSG:3857 in meters
 data_path = Path(os.getenv('DATA_PATH'))
 
 def get(url, quartier, force: bool=False) -> Path:
-
-    path_json = data_path / 'les-arbres.json'
     dataset = 'les-arbres'
+    path_json = data_path / f'{dataset}.json'
     columns = ['libellefrancais','genre', 'espece', 'varieteoucultivar','circonferenceencm','hauteurenmf']
     rows = 1000
     #quartier = [(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)]
