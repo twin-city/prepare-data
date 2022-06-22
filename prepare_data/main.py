@@ -56,11 +56,11 @@ if __name__ == '__main__':
     if args.crs != "EPSG:2154":
         inProj  = Proj('+init='+args.crs, preserve_units=True)
         outProj = Proj("+init=EPSG:2154") #  LAMBERT
-        x1, y1 = transform(inProj, outProj, args.x1, args.y1)
-        x2, y2 = transform(inProj, outProj, args.x2, args.y2)
+        x1, y1 = transform(inProj, outProj, args.y1, args.x1)
+        x2, y2 = transform(inProj, outProj, args.y2, args.x2)
     else:
         x1, y1, x2, y2 = args.x1, args.y1, args.x2, args.y2
-
+    print(x1, y1, x2, y2)
     # Convert to shapely polygon
     polygon = utils.convert2poly(x1, y1, x2, y2)
     main(polygon)
