@@ -21,7 +21,7 @@ filter_pattern = re.compile(r'.*.gpkg')
 def get(url, force:bool=True) -> Path:
 
     zip_file = data_path / 'bd_topo_75.7z'
-    # Download if fore or not exist
+    # Download if force or not exist
     if force or (not zip_file.exists()):
         req = requests.get(url)
         with zip_file.open('wb') as f:
