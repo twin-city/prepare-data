@@ -7,3 +7,4 @@ zipfile38
 python-dotenv
 geojson
 pyproj
+py7zr
