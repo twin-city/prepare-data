@@ -9,7 +9,7 @@ _path_gpkg =  data_path / 'BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/BDT
 _path_road = Path(__file__).parent / 'data/les-routes-st-augustin.json'
 
 def test_get():
-    path_gpkg = get(url, force=True)
+    path_gpkg = get(url, force=False)
     assert path_gpkg == _path_gpkg
     assert path_gpkg.stat().st_size > 1e6
 
@@ -22,4 +22,4 @@ def test_write(quartier):
     path_road = data_path / 'road.json'
     data_road = prepare(_path_gpkg, quartier)
     write(path_road, data_road)
-    assert path_road.stat().st_size == 4671
+    assert path_road.stat().st_size == 4681

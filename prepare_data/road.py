@@ -54,7 +54,7 @@ def prepare(path_gpkg: Path, quartier):
     df['coords'] = coordonnees
     df = pd.DataFrame(df)
     df.drop('geometry', axis='columns', inplace=True)
-    return df.to_dict(orient='records')
+    return {'data': df.to_dict(orient='records')}
 
 def write(path_road: Path, data, force=True):
     if force or (not path_road.exists()):

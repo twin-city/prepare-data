@@ -64,7 +64,7 @@ def prepare(data_json: list):
     arbres.drop('geo_point_2d', axis='columns', inplace=True)
     arbres.drop(axis=0, index = index_to_remove, inplace = True)
     data_arbres = pd.DataFrame(arbres)
-    return data_arbres.to_dict(orient='records')
+    return {'data': data_arbres.to_dict(orient='records')}
 
 def write(path_tree: Path, data, force=True):
     if force or (not path_tree.exists()):

@@ -65,7 +65,7 @@ def prepare(data_json: list):
     lights.drop('geo_point_2d', axis='columns', inplace=True)
     lights.drop(axis=0, index = index_to_remove, inplace = True)
     data_lights = pd.DataFrame(lights)
-    return data_lights.to_dict(orient='records')
+    return {'data': data_lights.to_dict(orient='records')}
 
 def write(path_lights: Path, data, force=True):
     if force or (not path_lights.exists()):
