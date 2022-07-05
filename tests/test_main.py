@@ -4,8 +4,8 @@ def test_main(quartier):
     # get, prepare, save
     main(quartier)
     # test save jsons
-    assert path_lights.stat().st_size == 14327
-    assert path_road.stat().st_size == 4681
-    assert path_building.stat().st_size == 56754
-    assert path_tree.stat().st_size == 13221
-    assert path_bollard.stat().st_size == 38867
+    assert path_lights.stat().st_size > 14000
+    assert path_road.stat().st_size > 4000
+    assert path_building.stat().st_size > 56000
+    assert path_tree.stat().st_size > 13000
+    assert path_bollard.stat().st_size > 38000
