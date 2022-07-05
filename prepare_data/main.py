@@ -8,12 +8,14 @@ import tree
 import road
 import light
 import building
+import bollard
 import utils
 
 light_url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
 road_url = 'https://wxs.ign.fr/859x8t863h6a09o9o6fy4v60/telechargement/prepackage/BDTOPOV3-TOUSTHEMES-DEPARTEMENT_GPKG_PACK_221$BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/file/BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15.7z'
 building_url = 'https://static.data.gouv.fr/resources/base-de-donnee-nationale-des-batiments-version-0-6/20220427-184828/bnb-export-75.gpkg.zip'
 tree_url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
+bollard_url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
 
 data_path = Path(os.getenv('DATA_PATH'))
 
@@ -23,6 +25,7 @@ path_lights = data_path / 'light.json'
 path_road = data_path / 'road.json'
 path_building = data_path / 'building.json'
 path_tree = data_path / 'tree.json'
+path_bollard = data_path / 'bollard.json'
 
 def main(neighborhood):
     data_light = light.prepare(
@@ -40,6 +43,10 @@ def main(neighborhood):
     data_tree = tree.prepare(
         tree.get(tree_url, neighborhood, force = True))
     tree.write(path_tree, data_tree)
+
+    data_bollard = bollard.prepare(
+        bollard.get(bollard_url, neighborhood, force = True))
+    bollard.write(path_bollard, data_bollard)
 
 if __name__ == '__main__':
 
