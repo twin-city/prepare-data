@@ -21,7 +21,7 @@ filter_pattern = re.compile(r'.*.gpkg')
 def get(url, force:bool=True) -> Path:
 
     zip_file = data_path / 'bd_topo_75.7z'
-    # Download if fore or not exist
+    # Download if force or not exist
     if force or (not zip_file.exists()):
         req = requests.get(url)
         with zip_file.open('wb') as f:
@@ -54,7 +54,7 @@ def prepare(path_gpkg: Path, quartier):
     df['coords'] = coordonnees
     df = pd.DataFrame(df)
     df.drop('geometry', axis='columns', inplace=True)
-    return df.to_dict(orient='records')
+    return {'data': df.to_dict(orient='records')}
 
 def write(path_road: Path, data, force=True):
     if force or (not path_road.exists()):

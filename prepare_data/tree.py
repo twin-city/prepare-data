@@ -19,9 +19,8 @@ outProj = Proj("+init=EPSG:4326") # WGS84 in degrees and not EPSG:3857 in meters
 data_path = Path(os.getenv('DATA_PATH'))
 
 def get(url, quartier, force: bool=False) -> Path:
-
-    path_json = data_path / 'les-arbres.json'
     dataset = 'les-arbres'
+    path_json = data_path / f'{dataset}.json'
     columns = ['libellefrancais','genre', 'espece', 'varieteoucultivar','circonferenceencm','hauteurenmf']
     rows = 1000
     #quartier = [(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)]
@@ -65,7 +64,7 @@ def prepare(data_json: list):
     arbres.drop('geo_point_2d', axis='columns', inplace=True)
     arbres.drop(axis=0, index = index_to_remove, inplace = True)
     data_arbres = pd.DataFrame(arbres)
-    return data_arbres.to_dict(orient='records')
+    return {'data': data_arbres.to_dict(orient='records')}
 
 def write(path_tree: Path, data, force=True):
     if force or (not path_tree.exists()):

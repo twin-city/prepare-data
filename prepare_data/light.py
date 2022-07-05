@@ -20,9 +20,8 @@ outProj = Proj("+init=EPSG:4326") # WGS84 in degrees and not EPSG:3857 in meters
 data_path = Path(os.getenv('DATA_PATH'))
 
 def get(url, quartier, force: bool=False) -> Path:
-
-    path_json = data_path / 'light.json'
     dataset = 'eclairage-public'
+    path_json = data_path / f'{dataset}.json'
     columns = ['lib_suppor', 'hauteur_su']
     rows = 1000
     #quartier = [(649985, 6864006), (650266, 6864006),(650266, 6864226), (649985, 6864226),  (649985, 6864006)]
@@ -42,7 +41,7 @@ def get(url, quartier, force: bool=False) -> Path:
         else:
             return data_light.status_code
 
-    elif path_json.exists():
+    if path_json.exists():
         data = load(path_json)
         return data
 
@@ -66,7 +65,7 @@ def prepare(data_json: list):
     lights.drop('geo_point_2d', axis='columns', inplace=True)
     lights.drop(axis=0, index = index_to_remove, inplace = True)
     data_lights = pd.DataFrame(lights)
-    return data_lights.to_dict(orient='records')
+    return {'data': data_lights.to_dict(orient='records')}
 
 def write(path_lights: Path, data, force=True):
     if force or (not path_lights.exists()):

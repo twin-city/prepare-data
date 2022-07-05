@@ -1,7 +1,6 @@
 from building import get, prepare, write, data_path
 from pathlib import Path
 from utils import load
-from fixture import quartier
 
 url = 'https://static.data.gouv.fr/resources/base-de-donnee-nationale-des-batiments-version-0-6/20220427-184828/bnb-export-75.gpkg.zip'
 _path_gpkg =  data_path / 'bnb_export_75.gpkg'

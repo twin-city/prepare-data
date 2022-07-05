@@ -23,4 +23,4 @@ def test_write():
     path_tree = data_path / 'tree.json'
     _data_tree = load(_path_tree)
     write(path_tree, _data_tree)
-    assert path_tree.stat().st_size == 13211
+    assert path_tree.stat().st_size == 13221

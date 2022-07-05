@@ -1,5 +1,14 @@
+[project]
+name = "prepare-data"
+version = "0.0.1"
+authors = [
+  { name="Tristan Solus"},
+  { name="Victor Journé"}
+]
+description = "Get and prepare ground data for Unity, in Paris"
+readme = "README.md"
+requires-python = ">=3.7"
 [tool.pytest.ini_options]
 pythonpath = [
   "prepare_data"
 ]
-
