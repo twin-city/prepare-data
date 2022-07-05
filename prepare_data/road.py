@@ -42,16 +42,9 @@ def prepare(path_gpkg: Path, quartier):
     df = gpd.read_file(path_gpkg, mask=quartier, crs = CRS, layer='troncon_de_route')
     df = df[['nom_1_gauche', 'largeur_de_chaussee', 'sens_de_circulation', 'geometry']]
     coordonnees =[]
-    coords = ['x','y']
-    points =['p1','p2']
     for i, row in df.iterrows():
-        new_line = []
-        new_point1= dict(zip(coords, row['geometry'].bounds[2:]))
-        new_line.append(new_point1)
-        new_point2=dict(zip(coords, row['geometry'].bounds[:2]))
-        new_line.append(new_point2)
-        coordonnees.append(new_line)
-    df['coords'] = coordonnees
+        coordonnees.append([{'x':x, 'y':y} for x,y in zip(*row['geometry'].xy)])
+    df['coordonnees'] = coordonnees
     df = pd.DataFrame(df)
     df.drop('geometry', axis='columns', inplace=True)
     return {'data': df.to_dict(orient='records')}

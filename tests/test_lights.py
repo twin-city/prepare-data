@@ -1,6 +1,6 @@
 from light import get, prepare, write, data_path
 from pathlib import Path
-from utils import load
+from utils import load, write
 
 url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
 
@@ -23,4 +23,4 @@ def test_write():
     path_lights = data_path / 'light.json'
     _data_lights = load(_path_lights)
     write(path_lights, _data_lights)
-    assert path_lights.stat().st_size == 14327
+    assert path_lights.stat().st_size >= 14000

@@ -61,10 +61,11 @@ def prepare(data_json: list):
     for i in range(len(coordonnees)):
         coordonnees[i] = dict(zip(repere, coordonnees[i]))
 
-    lights['coordonnees']=coordonnees
+    lights['coordonnees'] = coordonnees
     lights.drop('geo_point_2d', axis='columns', inplace=True)
     lights.drop(axis=0, index = index_to_remove, inplace = True)
     data_lights = pd.DataFrame(lights)
+
     return {'data': data_lights.to_dict(orient='records')}
 
 def write(path_lights: Path, data, force=True):
