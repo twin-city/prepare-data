@@ -10,17 +10,17 @@ _path_bollards = Path(__file__).parent / 'data/bollards-st-augustin.json'
 
 def test_get(quartier):
     data_json = get(url, quartier, force=True)
-    assert data_json['nhits'] == 124
-    assert len(data_json['records']) == 124
+    assert data_json['nhits'] == 460
+    assert len(data_json['records']) == 460
 
 def test_prepare():
     data_json = load(_path_json)
-    data_bollards = prepare(data_json)
-    _data_bollards = load(_path_bollards)
-    assert data_bollards == _data_bollards
+    data_bollard = prepare(data_json)
+    _data_bollard = load(_path_bollards)
+    assert data_bollard == _data_bollard
 
 def test_write():
-    path_bolards = data_path / 'bollard.json'
+    path_bollards = data_path / 'bollard.json'
     _data_bollards = load(_path_bollards)
     write(path_bollards, _data_bollards)
-    assert path_bollards.stat().st_size == 14317
+    assert path_bollards.stat().st_size == 38867
