@@ -22,12 +22,6 @@ def convert_geo(list_geo: list, type_geo:str) -> List[dict]:
         dict_geo['coordonnees'] += [{'x':point[0], "y":point[1]}]
     return dict_geo
 
-def create_geoseries(x1, x2, y1, y2):
-    #create neighborhood polygon
-    quartier = gpd.GeoSeries([Polygon([[(x1,y1), (x2,y1), (x2, y2),(x1,y2), (x1,y1)]])])
-    quartier = quartier.set_crs(CRS)
-    return quartier
-
 def convert2poly(x1, y1, x2, y2):
     return Polygon([(x1, y1), (x2, y1),
                     (x2, y2), (x1, y2),
