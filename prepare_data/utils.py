@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List
 import json
 from shapely.geometry import Polygon
+import geopandas as gpd
 
 def write(path: Path, obj):
     # write JSON files:
