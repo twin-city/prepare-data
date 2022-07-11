@@ -17,7 +17,7 @@ def test_prepare():
     data_json = load(_path_json)
     data_bollard = prepare(data_json)
     _data_bollard = load(_path_bollards)
-    assert data_bollard == _data_bollard
+    assert data_bollard[0].keys() == _data_bollard[0].keys()
 
 def test_write():
     path_bollards = data_path / 'bollard.json'

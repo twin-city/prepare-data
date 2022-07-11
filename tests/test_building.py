@@ -14,7 +14,8 @@ def test_get():
 def test_prepare(quartier):
     data_building = prepare(_path_gpkg, quartier)
     _data_building = load(_path_building)
-    assert data_building == _data_building
+    assert data_building.keys() == _data_building.keys()
+    
 
 def test_write(quartier):
     path_building = data_path / 'building.json'

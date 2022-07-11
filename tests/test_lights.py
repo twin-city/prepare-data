@@ -17,7 +17,7 @@ def test_prepare():
     data_json = load(_path_json)
     data_lights = prepare(data_json)
     _data_lights = load(_path_lights)
-    assert data_lights == _data_lights
+    assert data_lights['data'][0].keys() == _data_lights['data'][0].keys()
 
 def test_write():
     path_lights = data_path / 'light.json'

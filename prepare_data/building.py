@@ -63,6 +63,8 @@ def prepare(path_gpkg:Path, quartier):
         list_coords_int_xy = [ring.coords.xy for ring in row1['geometry'].interiors]
         for coords_int_xy in list_coords_int_xy:
             coords_int = [[x,y] for x,y in zip(*coords_int_xy)]
+            if len(coords_int) == 2:
+                continue
             if len(list_coords_int) > 0:
                 #import pdb; pdb.set_trace()
                 last_point = list_coords_int[-1]
