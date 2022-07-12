@@ -44,7 +44,7 @@ def get(url, quartier, force: bool=False) -> Path:
 
     elif path_json.exists():
         data = load(path_json)
-        return data
+        return  data
 
 def prepare(data_json: list):
     #data = load(path_json)
@@ -66,7 +66,7 @@ def prepare(data_json: list):
     bollards.drop('geo_point_2d', axis='columns', inplace=True)
     bollards.drop(axis=0, index = index_to_remove, inplace = True)
     data_bollards = pd.DataFrame(bollards)
-    return data_bollards.to_dict(orient='records')
+    return {'data' : data_bollards.to_dict(orient='records')}
 
 def write(path_bollards: Path, data, force=True):
     if force or (not path_bollards.exists()):
