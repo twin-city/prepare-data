@@ -8,7 +8,6 @@ from copy import deepcopy
 import os
 from datetime import datetime as dt
 
-
 def require_dir(item, type="Dataset"):
     itemp = Path(item)
     if not itemp.is_dir():
@@ -41,9 +40,7 @@ def get_sub_folders(upper_path):
         image_dir = next(image_glob)
     except StopIteration:
         print(f"** failed to get an image dir. aborting...")
-        return None, None
-
-    import pdb; pdb.set_trace()    
+        return None, None  
     
     print(f"--> using {image_dir.name} for images")
         
@@ -121,7 +118,7 @@ def get_perception_annotations(anno_dir, image_width=1024, image_height=768):
             # could open each image and check height/width, but will use passed in args for now
             image_dict['width'] = image_width
             image_dict['height'] = image_height
-            image_dict['filename'] = fp.name
+            image_dict['filename'] = str(fp)
             
             # dummy values 
             image_dict['license'] = None
@@ -227,6 +224,3 @@ def convert_perception(base_dir, out_file="coco_labels.json", image_width=1024, 
     print(f"\n--> Processing complete.  Total images = {len(mainfile['images'])}\n")
     
     return mainfile
-    
-    
-    
