@@ -1,0 +1,635 @@
+{
+  "version": "0.0.1",
+  "annotation_definitions": [
+    {
+      "id": "bounding box",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_0",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_0",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_1",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_1",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_2",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_2",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_3",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_3",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_4",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_4",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "bounding box_5",
+      "name": "bounding box",
+      "description": "Produces 2D bounding box annotations for all visible objects that bear a label defined in this labeler's associated label configuration.",
+      "format": "json",
+      "spec": [
+        {
+          "label_id": 1,
+          "label_name": "Glass"
+        },
+        {
+          "label_id": 2,
+          "label_name": "Population"
+        },
+        {
+          "label_id": 3,
+          "label_name": "Bus"
+        },
+        {
+          "label_id": 4,
+          "label_name": "Voiture"
+        },
+        {
+          "label_id": 5,
+          "label_name": "Alpine"
+        }
+      ]
+    },
+    {
+      "id": "semantic segmentation_5",
+      "name": "semantic segmentation",
+      "description": "Generates a semantic segmentation image for each captured frame. Each object is rendered to the semantic segmentation image using the color associated with it based on this labeler's associated semantic segmentation label configuration. Semantic segmentation images are saved to the dataset in PNG format. Please note that only one SemanticSegmentationLabeler can render at once across all cameras.",
+      "format": "PNG",
+      "spec": [
+        {
+          "label_name": "Population",
+          "pixel_value": {
+            "r": 0.425900877,
+            "g": 1.0,
+            "b": 0.6167059,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Glass",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Bus",
+          "pixel_value": {
+            "r": 0.0,
+            "g": 1.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Voiture",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "Alpine",
+          "pixel_value": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        {
+          "label_name": "sky",
+          "pixel_value": {
+            "r": 0.7169812,
+            "g": 0.7169812,
+            "b": 0.7169812,
+            "a": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

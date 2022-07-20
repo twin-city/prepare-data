@@ -1,0 +1,40 @@
+{
+  "version": "0.0.1",
+  "sensors": [
+    {
+      "id": "camera",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_0",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_1",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_2",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_3",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_4",
+      "modality": "camera",
+      "description": ""
+    },
+    {
+      "id": "camera_5",
+      "modality": "camera",
+      "description": ""
+    }
+  ]
+}
