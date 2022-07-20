@@ -92,15 +92,14 @@ def get_perception_annotations(anno_dir, image_width=1024, image_height=768):
     annos_block = []
 
     capture_files = anno_dir.glob('captures*.json')
-
     for j,_ in enumerate(capture_files):
         pass
 
     print(f"\n--> {j+1} capture files detected. Processing...")
 
     # processing
-    capture_files = anno_dir.glob('captures*.json')
-
+    capture_files = list(anno_dir.glob('captures*.json'))
+    capture_files.sort()
     for item in capture_files:
 
         fh = open_json(item)
