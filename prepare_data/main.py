@@ -1,10 +1,13 @@
 import argparse
-import os
+import os, sys
 from pathlib import Path
 from shapely.geometry import Polygon
 from pyproj import Proj, transform
 
-import tree
+print(Path(__file__).parent.resolve())
+sys.path.append(Path(__file__).parent.resolve())
+
+from .tree import prepare
 import road
 import light
 import building
