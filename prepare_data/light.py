@@ -48,6 +48,8 @@ def get(url, quartier, force: bool=False) -> Path:
 def prepare(data_json: list):
     #data = load(path_json)
     data = pd.DataFrame.from_dict(data_json['records'])
+    if 'fields' not in data:
+        return {'data': []}
     lights = pd.json_normalize(data['fields'])
     lights = lights[['lib_suppor', 'hauteur_su', 'geo_point_2d']]
     lights.rename(columns={'lib_suppor':'support', 'hauteur_su':'hauteur'}, inplace= True)
