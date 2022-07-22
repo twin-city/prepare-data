@@ -41,6 +41,7 @@ jobs:
   deploy:
     name: 🐋 Save docker image
     runs-on: ubuntu-20.04
+    needs: test
     steps:
     - uses: actions/checkout@v3
     - name: Build and push
