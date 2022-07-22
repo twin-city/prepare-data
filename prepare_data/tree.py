@@ -47,6 +47,8 @@ def get(url, quartier, force: bool=False) -> Path:
 def prepare(data_json: list):
     #data = load(path_json)
     data = pd.DataFrame.from_dict(data_json['records'])
+    if 'fields' not in data:
+        return {'data': []}
     arbres = pd.json_normalize(data['fields'])
     arbres = arbres[['hauteurenm', 'libellefrancais', 'geo_point_2d']]
     arbres.rename(columns={'hauteurenm':'hauteur', 'libellefrancais':'espece'})
