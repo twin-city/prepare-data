@@ -13,10 +13,9 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  test:
+    name: ✅ Test with pytest
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -38,3 +37,15 @@ jobs:
       run: |
         mv .env.sample .env
         pytest tests
+
+  deploy:
+    name: 🐋 Save docker image
+        runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: twin-city/prepare-data/prepare-data:latest
