@@ -1,4 +1,4 @@
-from prepare_data.main import main, data_path, path_lights, path_road, path_building, path_tree, path_bollard
+from main import main, data_path, path_lights, path_road, path_building, path_tree, path_bollard
 
 def test_main(quartier):
     # get, prepare, save

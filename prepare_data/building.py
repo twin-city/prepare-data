@@ -7,10 +7,9 @@ import zipfile
 import re
 import requests
 from dotenv import load_dotenv
+from utils import convert_geo, write as write_json
 from math import nan
 from shapely.geometry import Polygon, LineString, MultiLineString, MultiPolygon, collection
-
-from .utils import convert_geo, write as write_json
 
 load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert

@@ -1,7 +1,8 @@
+from road import get, write, prepare, data_path
 from pathlib import Path
-
-from prepare_data.road import get, prepare, write, data_path
-from prepare_data.utils import load
+import geopandas as gpd
+from geojson import Polygon
+from utils import load
 
 url = 'https://wxs.ign.fr/859x8t863h6a09o9o6fy4v60/telechargement/prepackage/BDTOPOV3-TOUSTHEMES-DEPARTEMENT_GPKG_PACK_221$BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/file/BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15.7z'
 _path_gpkg =  data_path / 'BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/BDTOPO/1_DONNEES_LIVRAISON_2022-03-00088/BDT_3-0_GPKG_LAMB93_D075-ED2022-03-15/BDT_3-0_GPKG_LAMB93_D075-ED2022-03-15.gpkg'
