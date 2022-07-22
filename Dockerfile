@@ -9,7 +9,4 @@ RUN pip install -r requirements.txt
 RUN pip install -e .
 EXPOSE 80
 
-COPY ./app /app
-COPY ./env.sample .env
-
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
