@@ -55,4 +55,4 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
-        repository: twin-city/prepare-data:latest
+        repository: twin-city/prepare-data
