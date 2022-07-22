@@ -1,5 +1,9 @@
 FROM python:3.7-slim
 
+# Create data volume
+VOLUME /data
+RUN echo DATA_PATH=/data > .env
+
 # Install Fastapi
 RUN pip install fastapi uvicorn
 
