@@ -73,7 +73,7 @@ if __name__ == '__main__':
         x1, y1, x2, y2 = args.x1, args.y1, args.x2, args.y2
     print(x1, y1, x2, y2)
     # Convert to shapely polygon
-    polygon = utils.convert2poly(x1, y1, x2, y2)
+    polygon = convert2poly(x1, y1, x2, y2)
     main(polygon)
 
 
