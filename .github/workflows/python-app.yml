@@ -53,4 +53,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/twin-city/prepare-data/prepare-data:latest
+        tags: ghcr.io/twin-city/prepare-data:latest
