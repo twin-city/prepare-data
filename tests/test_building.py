@@ -1,7 +1,6 @@
+from building import get, prepare, write, data_path
 from pathlib import Path
-
-from prepare_data.building import get, prepare, write, data_path
-from prepare_data.utils import load
+from utils import load
 
 url = 'https://static.data.gouv.fr/resources/base-de-donnee-nationale-des-batiments-version-0-6/20220427-184828/bnb-export-75.gpkg.zip'
 _path_gpkg =  data_path / 'bnb_export_75.gpkg'
@@ -16,7 +15,7 @@ def test_prepare(quartier):
     data_building = prepare(_path_gpkg, quartier)
     _data_building = load(_path_building)
     assert data_building.keys() == _data_building.keys()
-
+    
 
 def test_write(quartier):
     path_building = data_path / 'building.json'

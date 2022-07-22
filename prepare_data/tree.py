@@ -9,7 +9,7 @@ import shapely
 from shapely.geometry import Polygon, LineString, MultiLineString, MultiPolygon, collection, Point
 from dotenv import load_dotenv
 from pyproj import Proj, transform
-from .utils import load, write as write_json
+from utils import load, write as write_json
 
 load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert

@@ -1,19 +1,15 @@
 import argparse
-import os, sys
+import os
 from pathlib import Path
 from shapely.geometry import Polygon
 from pyproj import Proj, transform
 
-print(Path(__file__).parent.resolve())
-sys.path.append(Path(__file__).parent.resolve())
-
-from .light import get as get_light, prepare as prepare_light, write as write_light
-from .tree import get as get_tree, prepare as prepare_tree, write as write_tree
-from .road import get as get_road, prepare as prepare_road, write as write_road
-from .building import get as get_building, prepare as prepare_building, write as write_building
-from .bollard import get as get_bollard, prepare as prepare_bollard, write as write_bollard
-from .utils import convert2poly
-
+import tree
+import road
+import light
+import building
+import bollard
+import utils
 
 light_url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
 road_url = 'https://wxs.ign.fr/859x8t863h6a09o9o6fy4v60/telechargement/prepackage/BDTOPOV3-TOUSTHEMES-DEPARTEMENT_GPKG_PACK_221$BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15/file/BDTOPO_3-0_TOUSTHEMES_GPKG_LAMB93_D075_2022-03-15.7z'
@@ -32,25 +28,25 @@ path_tree = data_path / 'tree.json'
 path_bollard = data_path / 'bollard.json'
 
 def main(neighborhood):
-    data_light = prepare_light(
-        get_light(light_url, neighborhood, force = True))
-    write_light(path_lights, data_light)
+    data_light = light.prepare(
+        light.get(light_url, neighborhood, force = True))
+    light.write(path_lights, data_light)
 
-    data_road = prepare_road(
-        get_road(road_url, force = False),neighborhood )
-    write_road(path_road, data_road)
+    data_road = road.prepare(
+        road.get(road_url, force = False),neighborhood )
+    road.write(path_road, data_road)
 
-    data_building = prepare_building(
-        get_building(building_url, force = False), neighborhood)
-    write_building(path_building, data_building)
+    data_building = building.prepare(
+        building.get(building_url, force = False), neighborhood)
+    building.write(path_building, data_building)
 
-    data_tree = prepare_tree(
-        get_tree(tree_url, neighborhood, force = True))
-    write_tree(path_tree, data_tree)
+    data_tree = tree.prepare(
+        tree.get(tree_url, neighborhood, force = True))
+    tree.write(path_tree, data_tree)
 
-    data_bollard = prepare_bollard(
-        get_bollard(bollard_url, neighborhood, force = True))
-    write_bollard(path_bollard, data_bollard)
+    data_bollard = bollard.prepare(
+        bollard.get(bollard_url, neighborhood, force = True))
+    bollard.write(path_bollard, data_bollard)
 
 if __name__ == '__main__':
 
@@ -73,7 +69,7 @@ if __name__ == '__main__':
         x1, y1, x2, y2 = args.x1, args.y1, args.x2, args.y2
     print(x1, y1, x2, y2)
     # Convert to shapely polygon
-    polygon = convert2poly(x1, y1, x2, y2)
+    polygon = utils.convert2poly(x1, y1, x2, y2)
     main(polygon)
 
 
