@@ -8,3 +8,4 @@ python-dotenv
 geojson
 pyproj
 py7zr
+boto3
