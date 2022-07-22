@@ -56,4 +56,3 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         repository: twin-city/prepare-data:latest
-        tag_with_ref: true
