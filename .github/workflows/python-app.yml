@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+
 permissions:
   contents: read
 
@@ -45,11 +50,14 @@ jobs:
   deploy:
     name: 🐋 Save docker image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     needs: test
     steps:
+      steps:
       -
-        name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -64,10 +72,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
+        name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      -
         # Push to master branch - push "latest" tag
         name: Build and Push (latest)
         if: github.event_name == 'pull_request'
         uses: docker/build-push-action@v3
         with:
+          context: .
+          platforms: linux/amd64
           push: true
-          tags: ghcr.io/twin-city/prepare-data:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
