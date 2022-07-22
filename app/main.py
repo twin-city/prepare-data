@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from prepare_data.main import main
 from prepare_data import utils
+from pyproj import Proj, transform
 
 app = FastAPI()
 
