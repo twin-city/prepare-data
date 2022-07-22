@@ -36,7 +36,7 @@ jobs:
     - name: Test with pytest
       run: |
         # prepare_data module seems not to be used, whereas it is defined
-        # in pyproject.toml, work  locally but not in githubaction.
+        # in pyproject.toml, works  locally but not in githubaction.
         # Add the module directly in the python path ...
         export PYTHONPATH=$PYTHONPATH:$PWD/prepare_data
         mv .env.sample .env
@@ -53,4 +53,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: twin-city/prepare-data/prepare-data:latest
+        tags: ghcr.io/twin-city/prepare-data/prepare-data:latest
