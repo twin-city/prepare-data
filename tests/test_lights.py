@@ -1,6 +1,8 @@
-from light import get, prepare, write, data_path
 from pathlib import Path
-from utils import load, write
+
+from prepare_data.light import get, prepare, write, data_path
+from prepare_data.utils import load
+
 
 url = 'https://opendata.paris.fr/api/records/1.0/search/?dataset={dataset}&q=&{list_facet}&rows={rows}&epsg=2154&geofilter.polygon={polygon}'
 
