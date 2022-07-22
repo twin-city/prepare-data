@@ -56,8 +56,7 @@ jobs:
     needs: test
     steps:
       steps:
-      -
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -78,7 +77,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       -
-        # Push to master branch - push "latest" tag
         name: Build and Push (latest)
         if: github.event_name == 'pull_request'
         uses: docker/build-push-action@v3
