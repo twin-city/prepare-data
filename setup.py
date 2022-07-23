@@ -1,7 +1,4 @@
 from setuptools import setup, find_packages
 
 setup(name="prepare_data",
-      packages=find_packages(),
-      install_requires = [
-        'shapely'
-    ])
+      packages=find_packages())
