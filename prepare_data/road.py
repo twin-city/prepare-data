@@ -11,7 +11,7 @@ from geojson import Polygon
 import py7zr
 import re
 from dotenv import load_dotenv
-from utils import convert_geo, write as write_json
+from .utils import convert_geo, write as write_json
 
 load_dotenv(Path(__file__).parents[1] / '.env')
 CRS = "EPSG:2154"#lambert
