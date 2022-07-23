@@ -7,7 +7,7 @@ authors = [
 ]
 description = "Get and prepare ground data for Unity, in Paris"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 dependencies = [
   'pandas>=1.2.0',
   'geopandas>=0.10.2',
