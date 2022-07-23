@@ -9,8 +9,14 @@ description = "Get and prepare ground data for Unity, in Paris"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
-  'pyproj',
-  'shapely',
+  'pandas>=1.2.0',
+  'geopandas>=0.10.2',
+  'wget==3.2'
+  'requests==2.27.1',
+  'zipfile38==0.0.3',
+  'geojson==2.5.0',
+  'pyproj==3.3.1',
+  'py7zr'==0.18.9',
 ]
 [tool.pytest.ini_options]
 pythonpath = [
