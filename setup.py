@@ -11,5 +11,6 @@ setup(name="prepare_data",
             'geojson==2.5.0',
             'pyproj==3.3.1',
             'py7zr==0.18.9',
+            'python-dotenv==0.20.0',
       ]
      )
