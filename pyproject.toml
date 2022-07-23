@@ -9,7 +9,7 @@ description = "Get and prepare ground data for Unity, in Paris"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
-  'pyproj,
+  'pyproj',
   'shapely',
 ]
 [tool.pytest.ini_options]
